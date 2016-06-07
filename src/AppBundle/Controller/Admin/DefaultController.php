@@ -6,10 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("/admin")
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/admin", name="avanzu_admin_home")
+     * @Route("/", name="avanzu_admin_home")
      */
     public function indexAction()
     {
