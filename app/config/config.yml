@@ -66,3 +66,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+avanzu_admin_theme:
+    bower_bin: C:\Users\xavier\AppData\Roaming\npm\bower.cmd
