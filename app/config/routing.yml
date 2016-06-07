@@ -1,3 +1,14 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+admin:
+    resource: "@AppBundle/Controller/Admin"
+    type:     annotation
+
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_homepage
+        permanent: true
