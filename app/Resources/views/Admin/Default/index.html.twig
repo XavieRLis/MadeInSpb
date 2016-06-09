@@ -1,0 +1,9 @@
+{% extends 'admin.html.twig' %}
+
+{% block page_content %}
+    {% for entity in entities %}
+        {% for field in fields %}
+            {{ dump(attribute(entity, field)) }}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
