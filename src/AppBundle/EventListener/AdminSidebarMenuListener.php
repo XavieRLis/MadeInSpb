@@ -22,12 +22,12 @@ class AdminSidebarMenuListener
     {
         // Build your menu here by constructing a MenuItemModel array
         $menuItems = array(
-            $blog = new MenuItemModel(
+            $users = new MenuItemModel(
                 'ItemId',
-                'ItemDisplayName',
-                'avanzu_admin_home',
+                'Пользователи',
+                'app_admin_user_index',
                 array(/* options */),
-                'iconclasses fa fa-plane'
+                'iconclasses fa fa-users'
             )
         );
         return $this->activateByRoute($request->get('_route'), $menuItems);
