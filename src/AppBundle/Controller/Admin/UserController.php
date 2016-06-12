@@ -21,5 +21,16 @@ class UserController extends CRUDController
     {
         $this->entityName = '\AppBundle\Entity\User';
         parent::__construct();
+        $this->listFields = array(
+            array(
+                'fieldName' => 'name',
+                'label' => 'ФИО'
+            ),
+            array(
+                'fieldName' => 'username',
+                'label' => 'Имя пользователя'
+            ),
+        );
+        $this->formType = '\AppBundle\Form\UserType';
     }
 }

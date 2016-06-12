@@ -7,6 +7,12 @@ root:
         _controller: FrameworkBundle:Redirect:redirect
         route: avanzu_admin_home
         permanent: true
+admin_dashboard:
+    path: /admin
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: avanzu_admin_home
+        permanent: true
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
