@@ -23,11 +23,27 @@ class AdminSidebarMenuListener
         // Build your menu here by constructing a MenuItemModel array
         $menuItems = array(
             $users = new MenuItemModel(
-                'ItemId',
+                'users',
                 'Пользователи',
                 'app_admin_user_index',
                 array(/* options */),
                 'iconclasses fa fa-users'
+            ),
+            $settings = new MenuItemModel(
+                'settings',
+                'Настройки',
+                false,
+                array(/* options */),
+                'iconclasses fa fa-cog'
+            )
+        );
+        $settings->addChild(
+            new MenuItemModel(
+                'cities',
+                'Города',
+                'app_admin_city_index',
+                array(/* options */),
+                'iconclasses fa fa-building'
             )
         );
         return $this->activateByRoute($request->get('_route'), $menuItems);

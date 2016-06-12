@@ -15,7 +15,7 @@
                 <tbody>
                     <tr>
                         {% for field in fields %}
-                            <th>{{ field.fieldName }}</th>
+                            <th>{{ field.label }}</th>
                         {% endfor %}
                         <th style="width: 95px">Actions</th>
                     </tr>
@@ -102,7 +102,6 @@
                 method: "POST",
                 data: formData,
                 success: function (data) {
-                    $('#form').html(data);
                     location.reload();
                 }
             });
