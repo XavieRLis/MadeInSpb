@@ -46,6 +46,15 @@ class AdminSidebarMenuListener
                 'iconclasses fa fa-building'
             )
         );
+        $settings->addChild(
+            new MenuItemModel(
+                'languages',
+                'Языки',
+                'app_admin_language_index',
+                array(/* options */),
+                'iconclasses fa fa-language'
+            )
+        );
         return $this->activateByRoute($request->get('_route'), $menuItems);
     }
 
