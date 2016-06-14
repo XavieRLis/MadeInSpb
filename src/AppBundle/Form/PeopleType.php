@@ -11,16 +11,30 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class PeopleTypeType extends AbstractType
+class PeopleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, array(
+            ->add('name', TextType::class, array(
+                'required' => false,
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'ФИО'
+                ),
+            ))
+            ->add('vkId', TextType::class, array(
                 'required' => true,
                 'label' => false,
                 'attr' => array(
-                    'placeholder' => 'Название'
+                    'placeholder' => 'Ссылка нв VK'
+                ),
+            ))
+            ->add('role', null, array(
+                'required' => true,
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Роль'
                 ),
             ))
         ;
@@ -29,6 +43,6 @@ class PeopleTypeType extends AbstractType
 
     public function getName()
     {
-        return 'app_bundle_people_type_type';
+        return 'app_bundle_people_type';
     }
 }

@@ -29,6 +29,13 @@ class AdminSidebarMenuListener
                 array(/* options */),
                 'iconclasses fa fa-users'
             ),
+            $projects = new MenuItemModel(
+                'projects',
+                'Музыкальные проекты',
+                false,
+                array(/* options */),
+                'iconclasses fa fa-music'
+            ),
             $settings = new MenuItemModel(
                 'settings',
                 'Настройки',
@@ -77,7 +84,16 @@ class AdminSidebarMenuListener
             new MenuItemModel(
                 'people-types',
                 'Типы Участиков',
-                'app_admin_peopletype_index',
+                'app_admin_peoplerole_index',
+                array(/* options */),
+                'iconclasses fa fa-users'
+            )
+        );
+        $projects->addChild(
+            new MenuItemModel(
+                'people',
+                'Участники',
+                'app_admin_people_index',
                 array(/* options */),
                 'iconclasses fa fa-users'
             )

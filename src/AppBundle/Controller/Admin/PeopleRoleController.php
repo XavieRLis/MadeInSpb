@@ -15,11 +15,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * @package AppBundle\Controller\Admin
  * @Route("/people-types", name="admin_people_type")
  */
-class PeopleTypeController extends CRUDController
+class PeopleRoleController extends CRUDController
 {
     public function __construct()
     {
-        $this->entityName = '\AppBundle\Entity\PeopleType';
+        $this->entityName = '\AppBundle\Entity\PeopleRole';
         parent::__construct();
         $this->listFields = array(
             array(
@@ -27,6 +27,6 @@ class PeopleTypeController extends CRUDController
                 'label' => 'Название'
             ),
         );
-        $this->formType = '\AppBundle\Form\PeopleTypeType';
+        $this->formType = '\AppBundle\Form\PeopleRoleType';
     }
 }
