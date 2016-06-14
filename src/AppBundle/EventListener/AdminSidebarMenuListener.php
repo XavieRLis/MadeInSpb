@@ -64,6 +64,15 @@ class AdminSidebarMenuListener
                 'iconclasses fa fa-star'
             )
         );
+        $settings->addChild(
+            new MenuItemModel(
+                'music-types',
+                'Направления',
+                'app_admin_musictype_index',
+                array(/* options */),
+                'iconclasses fa fa-star'
+            )
+        );
         return $this->activateByRoute($request->get('_route'), $menuItems);
     }
 
