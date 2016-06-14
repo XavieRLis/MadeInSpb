@@ -73,6 +73,15 @@ class AdminSidebarMenuListener
                 'iconclasses fa fa-star'
             )
         );
+        $settings->addChild(
+            new MenuItemModel(
+                'people-types',
+                'Типы Участиков',
+                'app_admin_peopletype_index',
+                array(/* options */),
+                'iconclasses fa fa-users'
+            )
+        );
         return $this->activateByRoute($request->get('_route'), $menuItems);
     }
 
