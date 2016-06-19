@@ -33,13 +33,6 @@ class PersonType extends AbstractType
                     'placeholder' => 'Ссылка на VK'
                 ),
             ))
-            ->add('role', null, array(
-                'required' => true,
-                'label' => false,
-                'attr' => array(
-                    'placeholder' => 'Роль'
-                ),
-            ))
         ;
         $builder->get('vkId')
             ->addModelTransformer(new CallbackTransformer(

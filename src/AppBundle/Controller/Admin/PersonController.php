@@ -23,11 +23,7 @@ class PersonController extends CRUDController
             array(
                 'fieldName' => 'vkId',
                 'label' => 'Ссылка VK'
-            ),
-            array(
-                'fieldName' => 'role',
-                'label' => 'Роль'
-            ),
+            ),            
         );
         $this->formType = '\AppBundle\Form\PersonType';
     }

@@ -26,14 +26,7 @@ class Person
      * @var string
      * @ORM\Column(type ="string")
      */
-    private $vkId;
-
-    /**
-     * @var PersonRole
-     * @ORM\ManyToOne(targetEntity="PersonRole", inversedBy="people")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-     */
-    private $role;
+    private $vkId;    
 
     /**
      * Get id
@@ -92,28 +85,5 @@ class Person
     {
         return $this->vkId;
     }
-
-    /**
-     * Set role
-     *
-     * @param \AppBundle\Entity\PersonRole $role
-     *
-     * @return Person
-     */
-    public function setRole(PersonRole $role = null)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return \AppBundle\Entity\PersonRole
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
+   
 }
