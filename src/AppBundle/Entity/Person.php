@@ -30,7 +30,7 @@ class Person
 
     /**
      * @var PersonRole
-     * @ORM\ManyToOne(targetEntity="PersonRole", inversedBy="Person")
+     * @ORM\ManyToOne(targetEntity="PersonRole", inversedBy="people")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $role;
