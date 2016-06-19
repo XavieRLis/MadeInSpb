@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="people_roles")
  */
-class PeopleRole
+class PersonRole
 {
     /**
      * @ORM\Id
@@ -24,7 +24,7 @@ class PeopleRole
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="People", mappedBy="role")
+     * @ORM\OneToMany(targetEntity="Person", mappedBy="role")
      */
     private $people;
 
@@ -44,7 +44,7 @@ class PeopleRole
      *
      * @param string $title
      *
-     * @return PeopleRole
+     * @return PersonRole
      */
     public function setTitle($title)
     {
@@ -73,11 +73,11 @@ class PeopleRole
     /**
      * Add person
      *
-     * @param People $person
+     * @param Person $person
      *
-     * @return PeopleRole
+     * @return PersonRole
      */
-    public function addPerson(People $person)
+    public function addPerson(Person $person)
     {
         $this->people[] = $person;
 
@@ -85,21 +85,21 @@ class PeopleRole
     }
 
     /**
-     * Remove person
+     * Remove Person
      *
-     * @param People $person
+     * @param Person $person
      */
-    public function removePerson(People $person)
+    public function removePerson(Person $person)
     {
         $this->people->removeElement($person);
     }
 
     /**
-     * Get people
+     * Get Person
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPeople()
+    public function getPerson()
     {
         return $this->people;
     }

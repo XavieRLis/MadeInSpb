@@ -84,7 +84,7 @@ class AdminSidebarMenuListener
             new MenuItemModel(
                 'people-types',
                 'Типы Участиков',
-                'app_admin_peoplerole_index',
+                'app_admin_personrole_index',
                 array(/* options */),
                 'iconclasses fa fa-users'
             )
@@ -93,7 +93,7 @@ class AdminSidebarMenuListener
             new MenuItemModel(
                 'people',
                 'Участники',
-                'app_admin_people_index',
+                'app_admin_person_index',
                 array(/* options */),
                 'iconclasses fa fa-users'
             )

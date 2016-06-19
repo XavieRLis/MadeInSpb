@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use \BW\Vkontakte as Vk;
 
 
-class PeopleType extends AbstractType
+class PersonType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -62,6 +62,6 @@ class PeopleType extends AbstractType
 
     public function getName()
     {
-        return 'app_bundle_people_type';
+        return 'app_bundle_person_type';
     }
 }

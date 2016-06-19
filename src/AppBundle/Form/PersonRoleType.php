@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class PeopleRoleType extends AbstractType
+class PersonRoleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,6 +29,6 @@ class PeopleRoleType extends AbstractType
 
     public function getName()
     {
-        return 'app_bundle_people_role_type';
+        return 'app_bundle_person_role_type';
     }
 }

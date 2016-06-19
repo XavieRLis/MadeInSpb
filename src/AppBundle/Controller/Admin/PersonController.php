@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: xavier
- * Date: 09.06.2016
- * Time: 22:23
- */
 
 namespace AppBundle\Controller\Admin;
 
@@ -13,13 +7,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * Class UserController
  * @package AppBundle\Controller\Admin
- * @Route("/people", name="admin_people")
+ * @Route("/people", name="admin_person")
  */
-class PeopleController extends CRUDController
+class PersonController extends CRUDController
 {
     public function __construct()
     {
-        $this->entityName = '\AppBundle\Entity\People';
+        $this->entityName = '\AppBundle\Entity\Person';
         parent::__construct();
         $this->listFields = array(
             array(
@@ -35,6 +29,6 @@ class PeopleController extends CRUDController
                 'label' => 'Роль'
             ),
         );
-        $this->formType = '\AppBundle\Form\PeopleType';
+        $this->formType = '\AppBundle\Form\PersonType';
     }
 }

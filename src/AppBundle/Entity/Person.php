@@ -3,12 +3,11 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="people")
  */
-class People
+class Person
 {
     /**
      * @ORM\Id
@@ -30,8 +29,8 @@ class People
     private $vkId;
 
     /**
-     * @var PeopleRole
-     * @ORM\ManyToOne(targetEntity="PeopleRole", inversedBy="people")
+     * @var PersonRole
+     * @ORM\ManyToOne(targetEntity="PersonRole", inversedBy="Person")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $role;
@@ -75,7 +74,7 @@ class People
      *
      * @param string $vkId
      *
-     * @return People
+     * @return Person
      */
     public function setVkId($vkId)
     {
@@ -97,11 +96,11 @@ class People
     /**
      * Set role
      *
-     * @param \AppBundle\Entity\PeopleRole $role
+     * @param \AppBundle\Entity\PersonRole $role
      *
-     * @return People
+     * @return Person
      */
-    public function setRole(PeopleRole $role = null)
+    public function setRole(PersonRole $role = null)
     {
         $this->role = $role;
 
@@ -111,7 +110,7 @@ class People
     /**
      * Get role
      *
-     * @return \AppBundle\Entity\PeopleRole
+     * @return \AppBundle\Entity\PersonRole
      */
     public function getRole()
     {
