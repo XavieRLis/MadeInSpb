@@ -89,6 +89,15 @@ class AdminSidebarMenuListener
                 'iconclasses fa fa-users'
             )
         );
+        $settings->addChild(
+            new MenuItemModel(
+                'link-types',
+                'Типы Ссылок',
+                'app_admin_linktype_index',
+                array(/* options */),
+                'iconclasses fa fa-share'
+            )
+        );
         $projects->addChild(
             new MenuItemModel(
                 'people',
@@ -96,6 +105,15 @@ class AdminSidebarMenuListener
                 'app_admin_person_index',
                 array(/* options */),
                 'iconclasses fa fa-users'
+            )
+        );
+        $projects->addChild(
+            new MenuItemModel(
+                'projects',
+                'Музпроекты',
+                'app_admin_musicproject_index',
+                array(/* options */),
+                'iconclasses fa fa-music'
             )
         );
         return $this->activateByRoute($request->get('_route'), $menuItems);

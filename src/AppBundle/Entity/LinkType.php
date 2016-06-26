@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="cities")
+ * @ORM\Table(name="link_types")
  */
-class City
+class LinkType
 {
     /**
      * @ORM\Id
@@ -22,12 +22,11 @@ class City
      * @ORM\Column(type="string")
      */
     private $name;
-    
+
     /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="MusicProject", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="Link", mappedBy="type")
      */
-    private $musicProjects;
+    private $links;
 
     /**
      * Get id
@@ -67,45 +66,40 @@ class City
      */
     public function __construct()
     {
-        $this->musicProjects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->links = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add musicProject
+     * Add link
      *
-     * @param \AppBundle\Entity\MusicProject $musicProject
+     * @param \AppBundle\Entity\Link $link
      *
-     * @return City
+     * @return LinkType
      */
-    public function addMusicProject(\AppBundle\Entity\MusicProject $musicProject)
+    public function addLink(\AppBundle\Entity\Link $link)
     {
-        $this->musicProjects[] = $musicProject;
+        $this->links[] = $link;
 
         return $this;
     }
 
     /**
-     * Remove musicProject
+     * Remove link
      *
-     * @param \AppBundle\Entity\MusicProject $musicProject
+     * @param \AppBundle\Entity\Link $link
      */
-    public function removeMusicProject(\AppBundle\Entity\MusicProject $musicProject)
+    public function removeLink(\AppBundle\Entity\Link $link)
     {
-        $this->musicProjects->removeElement($musicProject);
+        $this->links->removeElement($link);
     }
 
     /**
-     * Get musicProjects
+     * Get links
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMusicProjects()
+    public function getLinks()
     {
-        return $this->musicProjects;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
+        return $this->links;
     }
 }

@@ -24,7 +24,7 @@ class PersonRole
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Person", mappedBy="role")
+     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="role")
      */
     private $people;
 
@@ -107,5 +107,15 @@ class PersonRole
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Get people
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPeople()
+    {
+        return $this->people;
     }
 }

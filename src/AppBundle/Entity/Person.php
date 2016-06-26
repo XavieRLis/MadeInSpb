@@ -26,7 +26,12 @@ class Person
      * @var string
      * @ORM\Column(type ="string")
      */
-    private $vkId;    
+    private $vkId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="person")
+     */
+    private $memberships;
 
     /**
      * Get id
@@ -86,4 +91,45 @@ class Person
         return $this->vkId;
     }
    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->memberships = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add membership
+     *
+     * @param \AppBundle\Entity\MusicProjectMember $membership
+     *
+     * @return Person
+     */
+    public function addMembership(\AppBundle\Entity\MusicProjectMember $membership)
+    {
+        $this->memberships[] = $membership;
+
+        return $this;
+    }
+
+    /**
+     * Remove membership
+     *
+     * @param \AppBundle\Entity\MusicProjectMember $membership
+     */
+    public function removeMembership(\AppBundle\Entity\MusicProjectMember $membership)
+    {
+        $this->memberships->removeElement($membership);
+    }
+
+    /**
+     * Get memberships
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMemberships()
+    {
+        return $this->memberships;
+    }
 }

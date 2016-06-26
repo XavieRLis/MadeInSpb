@@ -23,6 +23,11 @@ class User extends BaseUser
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MusicProject", mappedBy="responsibleUser")
+     */
+    private $responsibleForProjects;
+
     public function __construct()
     {
         parent::__construct();
@@ -45,5 +50,39 @@ class User extends BaseUser
     {
         $this->name = $name;
         return $this;
+    }
+
+    /**
+     * Add responsibleForProject
+     *
+     * @param \AppBundle\Entity\MusicProject $responsibleForProject
+     *
+     * @return User
+     */
+    public function addResponsibleForProject(\AppBundle\Entity\MusicProject $responsibleForProject)
+    {
+        $this->responsibleForProjects[] = $responsibleForProject;
+
+        return $this;
+    }
+
+    /**
+     * Remove responsibleForProject
+     *
+     * @param \AppBundle\Entity\MusicProject $responsibleForProject
+     */
+    public function removeResponsibleForProject(\AppBundle\Entity\MusicProject $responsibleForProject)
+    {
+        $this->responsibleForProjects->removeElement($responsibleForProject);
+    }
+
+    /**
+     * Get responsibleForProjects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getResponsibleForProjects()
+    {
+        return $this->responsibleForProjects;
     }
 }

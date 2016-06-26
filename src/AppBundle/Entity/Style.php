@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -21,6 +22,12 @@ class Style
      * @ORM\Column(type="string")
      */
     private $name;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="MusicProject", mappedBy="style")
+     */
+    private $musicProjects;
 
 
     /**
@@ -55,5 +62,46 @@ class Style
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->musicProjects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add musicProject
+     *
+     * @param \AppBundle\Entity\MusicProject $musicProject
+     *
+     * @return Style
+     */
+    public function addMusicProject(\AppBundle\Entity\MusicProject $musicProject)
+    {
+        $this->musicProjects[] = $musicProject;
+
+        return $this;
+    }
+
+    /**
+     * Remove musicProject
+     *
+     * @param \AppBundle\Entity\MusicProject $musicProject
+     */
+    public function removeMusicProject(\AppBundle\Entity\MusicProject $musicProject)
+    {
+        $this->musicProjects->removeElement($musicProject);
+    }
+
+    /**
+     * Get musicProjects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMusicProjects()
+    {
+        return $this->musicProjects;
     }
 }
