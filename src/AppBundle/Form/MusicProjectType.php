@@ -53,7 +53,8 @@ class MusicProjectType extends AbstractType
                 'required' => false,
                 'label' => 'Описание'
             ))
-            ->add('imageFile', VichImageType::class, array('label' => false, 'required' => false))
+            ->add('imageFile', VichImageType::class, array('label' => false, 'required' => false,
+                'download_link' => true))
             ->add('email', EmailType::class, array(
                 'required' => false,
                 'label' => 'Email'
