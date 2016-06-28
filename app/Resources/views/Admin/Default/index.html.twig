@@ -58,19 +58,26 @@
                 $('#form').html(data);
             }
         });
-        $('#form').on("submit", 'form', function(e){
+        $('#form form').on("submit", 'form', function(e){
             e.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                url:$(this).attr('action'),
-                method: "POST",
-                data: formData,
-                success: function (data) {
-                    $('#form').html(data);
-                    location.reload();
+            var form = $(this);
+            var formData = new FormData(form);
+            console.log(form);
+            console.log(formData);
+            var xhr = new XMLHttpRequest();
+            xhr.open(form.getAttribute('method'), $(this).attr('action'));
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if(xhr.status == 200) {
+                        form.html(data);
+                        location.reload();
+                    }
                 }
-            });
+            };
+            xhr.send(formData);
         });
+
         $('.entity-edit').click(function (e) {
             var $entityId = $(this).data('entity-id');
 

@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\MusicProject;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -11,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MusicProjectType extends AbstractType
 {
@@ -47,26 +49,44 @@ class MusicProjectType extends AbstractType
                 'label' => 'Вокал',
                 'choices' => MusicProject::getVocals()
             ))
-            ->add('description', null, array(
+            ->add('description', CKEditorType::class, array(
                 'required' => false,
                 'label' => 'Описание'
             ))
-//            ->add('mainImage')
+            ->add('imageFile', VichImageType::class, array('label' => false, 'required' => false))
             ->add('email', EmailType::class, array(
                 'required' => false,
                 'label' => 'Email'
             ))
-            ->add('contactPhone')
+            ->add('contactPhone', null, array(
+                'required' => false,
+                'label' => 'телефон'
+            ))
             ->add('status', ChoiceType::class, array(
                 'required' => true,
                 'label' => 'Статус',
                 'choices' => MusicProject::getStatuses()
             ))
-            ->add('city')
-            ->add('language')
-            ->add('type')
-            ->add('style')
-            ->add('members')
+            ->add('city', null, array(
+                'required' => false,
+                'label' => 'Город'
+            ))
+            ->add('language', null, array(
+                'required' => false,
+                'label' => 'Город'
+            ))
+            ->add('type', null, array(
+                'required' => false,
+                'label' => 'Направление'
+            ))
+            ->add('style', null, array(
+                'required' => false,
+                'label' => 'Стили'
+            ))
+            ->add('members', null, array(
+                'required' => false,
+                'label' => 'Участники'
+            ))
         ;
     }
     

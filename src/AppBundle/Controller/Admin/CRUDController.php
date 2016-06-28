@@ -109,7 +109,6 @@ class CRUDController extends BaseController
         $manager = $this->getDoctrine()->getEntityManager();
         $form->handleRequest($request);
         if ($form->isValid()) {
-            
             $manager->remove($entity);
             $manager->flush();
             return $this->redirect($request->getPathInfo());
