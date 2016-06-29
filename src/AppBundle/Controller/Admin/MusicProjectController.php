@@ -28,6 +28,5 @@ class MusicProjectController extends CRUDController
             ),
         );
         $this->formType = '\AppBundle\Form\MusicProjectType';
-        $this->templateDirectory = 'Admin/MusicProjects/';
     }
 }
