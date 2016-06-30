@@ -58,19 +58,17 @@
                 $('#form').html(data);
             }
         });
-        $('#form form').on("submit", 'form', function(e){
+        $('#form').on("submit", 'form', function(e){
             e.preventDefault();
-            var form = $(this);
-            var formData = new FormData(form);
-            console.log(form);
-            console.log(formData);
+            var formElement = document.querySelector(".entity-form");
+            var formData = new FormData(formElement);
+
             var xhr = new XMLHttpRequest();
-            xhr.open(form.getAttribute('method'), $(this).attr('action'));
+            xhr.open($(this).attr('method'), $(this).attr('action'));
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     if(xhr.status == 200) {
-                        form.html(data);
                         location.reload();
                     }
                 }
@@ -114,4 +112,8 @@
             });
         });
     </script>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/plugins/select2/select2.full.min.js') }}" ></script>
 {% endblock %}

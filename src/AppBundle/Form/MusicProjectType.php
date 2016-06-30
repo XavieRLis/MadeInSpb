@@ -7,6 +7,7 @@ use AppBundle\Entity\MusicProject;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -82,7 +83,8 @@ class MusicProjectType extends AbstractType
             ))
             ->add('style', null, array(
                 'required' => false,
-                'label' => 'Стили'
+                'label' => 'Стили',
+
             ))
             ->add('members', null, array(
                 'required' => false,

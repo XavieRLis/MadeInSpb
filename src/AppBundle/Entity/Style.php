@@ -104,4 +104,9 @@ class Style
     {
         return $this->musicProjects;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
