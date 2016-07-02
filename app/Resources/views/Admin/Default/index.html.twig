@@ -111,6 +111,40 @@
                 }
             });
         });
+
+    </script>
+    <script type="text/javascript">
+        // keep track of how many email fields have been rendered
+
+        $(document).on('click','#collection_add',   function(e){
+            e.preventDefault();
+
+            var newWidget = $(this).parent('[data-form-type=collection]').attr('data-prototype');
+            console.log($(this).parent('[data-form-type=collection]'));
+            var name = $(this).parent('[data-form-type=collection]').attr('data-prototype-name');
+            var list = $(this).siblings(".collection-list");
+            var count = list.children('.collection-item').length;
+            newWidget = newWidget.replace(new RegExp(name,'g'), count);
+            list.append(newWidget);
+        });
+        $(document).on('click','[data-form-collection=delete]',   function(e){
+            e.preventDefault();
+            $(this).parents('[data-form-collection=item]').remove();
+
+        });
+        $(document).on('change','#catalog_attribute_form_type',   function(e){
+            e.preventDefault();
+            var choiceValue = $(this).val();
+            if(choiceValue =='choice'||choiceValue =='select')
+            {
+                $('.choices_collection').show();
+
+            }else {
+                $('.choices_collection').hide();
+            }
+
+
+        });
     </script>
 {% endblock %}
 {% block javascripts %}

@@ -38,6 +38,13 @@ class Link
     private $musicProject;
 
     /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $mainResource;
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -118,5 +125,23 @@ class Link
     public function getMusicProject()
     {
         return $this->musicProject;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isMainResource()
+    {
+        return $this->mainResource;
+    }
+
+    /**
+     * @param boolean $mainResource
+     * @return Link
+     */
+    public function setMainResource($mainResource)
+    {
+        $this->mainResource = $mainResource;
+        return $this;
     }
 }

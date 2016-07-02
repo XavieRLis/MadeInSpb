@@ -75,7 +75,7 @@ class MusicProjectType extends AbstractType
             ))
             ->add('language', null, array(
                 'required' => false,
-                'label' => 'Город'
+                'label' => 'Язык'
             ))
             ->add('type', null, array(
                 'required' => false,
@@ -86,9 +86,16 @@ class MusicProjectType extends AbstractType
                 'label' => 'Стили',
 
             ))
-            ->add('members', null, array(
+//            ->add('members', null, array(
+//                'required' => false,
+//                'label' => 'Участники'
+//            ))
+            ->add('links', CollectionType::class, array(
+                'label' => 'Ссылки',
                 'required' => false,
-                'label' => 'Участники'
+                'entry_type' => LinkType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
             ))
         ;
     }

@@ -16,3 +16,8 @@ services:
         class: '%app.admin.menu_listener.class%'
         tags:
             - { name: kernel.event_listener, event:theme.breadcrumb, method:onSetupMenu }
+
+    app.musicproject.listener:
+        class: AppBundle\EventListener\MusicProjectListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

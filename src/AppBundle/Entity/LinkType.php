@@ -102,4 +102,9 @@ class LinkType
     {
         return $this->links;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
