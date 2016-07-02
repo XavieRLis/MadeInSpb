@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -86,14 +87,18 @@ class MusicProjectType extends AbstractType
                 'label' => 'Стили',
 
             ))
-//            ->add('members', null, array(
-//                'required' => false,
-//                'label' => 'Участники'
-//            ))
             ->add('links', CollectionType::class, array(
                 'label' => 'Ссылки',
                 'required' => false,
                 'entry_type' => LinkType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('members', CollectionType::class, array(
+                'label' => 'Участники',
+                'required' => false,
+                'entry_type' => UrlType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
             ))

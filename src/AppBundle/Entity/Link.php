@@ -32,7 +32,7 @@ class Link
 
     /**
      * @var MusicProject
-     * @ORM\ManyToOne(targetEntity="MusicProject", inversedBy="links")
+     * @ORM\ManyToOne(targetEntity="MusicProject", inversedBy="links", cascade={"persist"})
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $musicProject;

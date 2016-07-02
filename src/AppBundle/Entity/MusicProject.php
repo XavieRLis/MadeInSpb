@@ -103,7 +103,7 @@ class MusicProject
     private $mainImage;
 
     /**
-     * @ORM\OneToMany(targetEntity="Link", mappedBy="musicProject", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Link", mappedBy="musicProject", cascade={"all"})
      */
     private $links;
 
@@ -582,8 +582,8 @@ class MusicProject
      */
     public function addLink(Link $link)
     {
-        
-        $this->links[] = $link;
+        $link->setMusicProject($this);
+        $this->links->add($link);
 
         return $this;
     }

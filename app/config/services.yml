@@ -18,6 +18,6 @@ services:
             - { name: kernel.event_listener, event:theme.breadcrumb, method:onSetupMenu }
 
     app.musicproject.listener:
-        class: AppBundle\EventListener\MusicProjectListener
+        class: AppBundle\EventListener\MusicProjectSubscriber
         tags:
-            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_subscriber, connection: default}
