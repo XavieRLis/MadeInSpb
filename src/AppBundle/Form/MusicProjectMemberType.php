@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\MusicProjectMember;
+use AppBundle\Form\DataTransformer\VKLinkToMemberTransformer;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -12,6 +14,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MusicProjectMemberType extends AbstractType
 {
+    private $manager;
+
+    public function __construct(EntityManager $manager)
+    {
+        $this->manager = $manager;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -42,6 +51,8 @@ class MusicProjectMemberType extends AbstractType
                 'label' => 'Контакт?'
             ))
         ;
+        $builder->get('person')
+            ->addModelTransformer(new VKLinkToMemberTransformer($this->manager));
 
     }
 

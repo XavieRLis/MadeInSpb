@@ -98,11 +98,13 @@ class MusicProjectType extends AbstractType
             ->add('members', CollectionType::class, array(
                 'label' => 'Участники',
                 'required' => false,
-                'entry_type' => UrlType::class,
+                'entry_type' => MusicProjectMemberType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
+                'by_reference' => false
             ))
         ;
+
     }
     
     /**

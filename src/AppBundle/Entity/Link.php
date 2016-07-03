@@ -144,4 +144,14 @@ class Link
         $this->mainResource = $mainResource;
         return $this;
     }
+
+    /**
+     * Get mainResource
+     *
+     * @return boolean
+     */
+    public function getMainResource()
+    {
+        return $this->mainResource;
+    }
 }

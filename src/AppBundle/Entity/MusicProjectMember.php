@@ -19,7 +19,7 @@ class MusicProjectMember
 
     /**
      * @var Person
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="memberships")
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="memberships", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      */
     private $person;
@@ -33,7 +33,7 @@ class MusicProjectMember
 
     /**
      * @var integer
-     * @ORM\Column(type="integer", length=4)
+     * @ORM\Column(type="integer", length=4, nullable=true)
      */
     private $startYear;
 
@@ -50,17 +50,10 @@ class MusicProjectMember
     private $contact;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MusicProject", mappedBy="members")
+     * @ORM\ManyToOne(targetEntity="MusicProject", inversedBy="members")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
-    private $projects;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $project;
 
     /**
      * Get id
@@ -192,19 +185,6 @@ class MusicProjectMember
         return $this->role;
     }
 
-    /**
-     * Add project
-     *
-     * @param \AppBundle\Entity\MusicProject $project
-     *
-     * @return MusicProjectMember
-     */
-    public function addProject(\AppBundle\Entity\MusicProject $project)
-    {
-        $this->projects[] = $project;
-
-        return $this;
-    }
 
     /**
      * Remove project
@@ -216,23 +196,29 @@ class MusicProjectMember
         $this->projects->removeElement($project);
     }
 
+
+
     /**
-     * Get projects
+     * Set project
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param \AppBundle\Entity\MusicProject $project
+     *
+     * @return MusicProjectMember
      */
-    public function getProjects()
+    public function setProject(MusicProject $project = null)
     {
-        return $this->projects;
+        $this->project = $project;
+
+        return $this;
     }
 
     /**
-     * Get contact
+     * Get project
      *
-     * @return boolean
+     * @return \AppBundle\Entity\MusicProject
      */
-    public function getContact()
+    public function getProject()
     {
-        return $this->contact;
+        return $this->project;
     }
 }

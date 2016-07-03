@@ -21,3 +21,8 @@ services:
         class: AppBundle\EventListener\MusicProjectSubscriber
         tags:
             - { name: doctrine.event_subscriber, connection: default}
+    app.form.type.mpmember:
+        class: AppBundle\Form\MusicProjectMemberType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }

@@ -108,8 +108,7 @@ class MusicProject
     private $links;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MusicProjectMember", inversedBy="projects")
-     * @ORM\JoinTable(name="projects_members")
+     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="project", cascade={"persist"})
      */
     private $members;
 
@@ -617,7 +616,8 @@ class MusicProject
      */
     public function addMember(MusicProjectMember $member)
     {
-        $this->members[] = $member;
+        $member->setProject($this);
+        $this->members->add($member);
 
         return $this;
     }
@@ -630,6 +630,7 @@ class MusicProject
     public function removeMember(MusicProjectMember $member)
     {
         $this->members->removeElement($member);
+        $member->removeProject($this);
     }
 
     /**

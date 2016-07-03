@@ -29,7 +29,7 @@ class Person
     private $vkId;
 
     /**
-     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="person", cascade={"remove"})
      */
     private $memberships;
 

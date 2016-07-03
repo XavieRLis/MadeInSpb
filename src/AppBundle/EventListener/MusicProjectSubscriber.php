@@ -18,13 +18,11 @@ class MusicProjectSubscriber implements EventSubscriber
 
     public function prePersist(LifecycleEventArgs $args)
     {
-        dump($args);
         $this->updateEntity($args);
     }
 
     public function preUpdate(LifecycleEventArgs $args)
     {
-        dump($args);
         $this->updateEntity($args);
     }
 
