@@ -64,7 +64,7 @@ class CRUDController extends BaseController
             return $this->redirect($request->getPathInfo());
         }
         
-        return $this->render(':Admin/Default:form.html.twig', array(
+        return $this->render($this->templateDirectory.'form.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -89,7 +89,7 @@ class CRUDController extends BaseController
             return $this->redirect($request->getPathInfo());
         }
 
-        return $this->render(':Admin/Default:form.html.twig', array(
+        return $this->render($this->templateDirectory.'form.html.twig', array(
             'form' => $form->createView()
         ));
     }

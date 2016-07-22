@@ -43,6 +43,7 @@ class PersonType extends AbstractType
                 function ($idAsLink) use ($vk) {
                     // transform the string back to an array
                     $id = str_replace('http://vk.com/', '', $idAsLink);
+                    $id = str_replace('https://vk.com/', '', $id);
                     $user = $vk->api('users.get', [
                         'user_ids' => $id,
                     ]);
