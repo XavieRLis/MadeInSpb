@@ -29,27 +29,33 @@ class MusicProjectType extends AbstractType
         $builder
             ->add('startYear', ChoiceType::class, array(
                 'required' => false,
-                'label' => 'Год основания',
+                'label' => false,
                 'choices' => $years,
+                'placeholder' => 'Основание'
             ))
             ->add('endYear', ChoiceType::class, array(
                 'required' => false,
-                'label' => 'Год закрытия',
+                'label' => false,
                 'choices' => $years,
+                'placeholder' => 'Закрытие'
             ))
             ->add('title', TextType::class, array(
                 'required' => true,
-                'label' => 'Название'
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Название'
+                ),
             ))
             ->add('category', ChoiceType::class, array(
                 'required' => true,
-                'label' => 'Категория',
+                'label' => false,
                 'choices' => MusicProject::getCategories()
             ))
             ->add('vocal', ChoiceType::class, array(
                 'required' => false,
-                'label' => 'Вокал',
-                'choices' => MusicProject::getVocals()
+                'label' => false,
+                'choices' => MusicProject::getVocals(),
+                'placeholder' => 'Вокал'
             ))
             ->add('description', CKEditorType::class, array(
                 'required' => false,
@@ -59,32 +65,41 @@ class MusicProjectType extends AbstractType
                 'download_link' => true))
             ->add('email', EmailType::class, array(
                 'required' => false,
-                'label' => 'Email'
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Email'
+                ),
             ))
             ->add('contactPhone', null, array(
                 'required' => false,
-                'label' => 'телефон'
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Телефон'
+                ),
             ))
             ->add('status', ChoiceType::class, array(
                 'required' => true,
-                'label' => 'Статус',
-                'choices' => MusicProject::getStatuses()
+                'label' => false,
+                'choices' => MusicProject::getStatuses(),
             ))
             ->add('city', null, array(
                 'required' => false,
-                'label' => 'Город'
+                'label' => false,
+                'placeholder' => 'Город'
             ))
             ->add('language', null, array(
                 'required' => false,
-                'label' => 'Язык'
+                'label' => false,
+                'placeholder' => 'Язык'
             ))
             ->add('type', null, array(
                 'required' => false,
-                'label' => 'Направление'
+                'label' => false,
+                'placeholder' => 'Направление'
             ))
             ->add('style', null, array(
                 'required' => false,
-                'label' => 'Стили',
+                'label' => false,
 
             ))
             ->add('links', CollectionType::class, array(

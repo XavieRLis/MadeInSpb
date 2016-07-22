@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{% extends ':Admin/Default:index.html.twig' %}
 {% block page_title %}
     {{ pageTitle.classname }}
 {% endblock %}
@@ -7,22 +7,18 @@
 {% endblock %}
 {% block page_content %}
     <div id="form">
-
     </div>
     <div class="box">
         <div class="box-body no-padding">
             <table class="table table-striped">
                 <tbody>
                     <tr>
-                       <th>Аватарка</th>
+
                         <th>Название</th>
                         <th style="width: 95px">Actions</th>
                     </tr>
                     {% for entity in entities %}
                         <tr>
-                            <td>
-                                <img src="{{ vich_uploader_asset(entity, 'imageFile') }}" alt="{{ entity.title }}" />
-                            </td>
                             <td>
                                 {{ entity.title }}
                             </td>
@@ -50,70 +46,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts_inline %}
-    <script>
-        $.ajax({
-            url:'new',
-            success: function (data) {
-                $('#form').html(data);
-            }
-        });
-        $('#form form').on("submit", 'form', function(e){
-            e.preventDefault();
-            var form = $(this);
-            var formData = new FormData(form);
-            console.log(form);
-            console.log(formData);
-            var xhr = new XMLHttpRequest();
-            xhr.open(form.getAttribute('method'), $(this).attr('action'));
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4) {
-                    if(xhr.status == 200) {
-                        form.html(data);
-                        location.reload();
-                    }
-                }
-            };
-            xhr.send(formData);
-        });
-
-        $('.entity-edit').click(function (e) {
-            var $entityId = $(this).data('entity-id');
-
-            $.ajax({
-                url:'edit/'+$entityId,
-                method: "GET",
-                success: function (data) {
-                    $('#form').html(data);
-                }
-            });
-        });
-        $('.entity-delete').click(function (e) {
-            var $entityId = $(this).data('entity-id');
-            $.ajax({
-                url:'delete/'+$entityId,
-                method: "GET",
-                success: function (data) {
-                    $('#deleteModal').find('.modal-body').html(data);
-                    $('#deleteModal').modal('show');
-                }
-            });
-        });
-
-        $('#deleteModal').on("submit", 'form', function(e){
-            e.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                url:$(this).attr('action'),
-                method: "POST",
-                data: formData,
-                success: function (data) {
-                    location.reload();
-                }
-            });
-        });
-    </script>
 {% endblock %}

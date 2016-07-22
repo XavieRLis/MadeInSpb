@@ -50,6 +50,7 @@ class VKLinkToMemberTransformer implements DataTransformerInterface
             return null;
         }
         $vkId = str_replace('http://vk.com/', '', $vkLink);
+        $vkId = str_replace('https://vk.com/', '', $vkId);
         $user = $vkAPI->api('users.get', [
             'user_ids' => $vkId,
         ]);
