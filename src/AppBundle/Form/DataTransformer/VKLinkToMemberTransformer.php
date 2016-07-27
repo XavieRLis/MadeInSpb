@@ -53,6 +53,7 @@ class VKLinkToMemberTransformer implements DataTransformerInterface
         $vkId = str_replace('https://vk.com/', '', $vkId);
         $user = $vkAPI->api('users.get', [
             'user_ids' => $vkId,
+            'lang' => 'ru'
         ]);
         $person = $this->manager
             ->getRepository('AppBundle:Person')
