@@ -90,6 +90,9 @@ class MusicProjectType extends AbstractType
             ->add('languages', null, array(
                 'required' => false,
                 'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Язык'
+                ),
 
             ))
             ->add('type', null, array(
@@ -100,6 +103,9 @@ class MusicProjectType extends AbstractType
             ->add('style', null, array(
                 'required' => false,
                 'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Стили'
+                ),
 
             ))
             ->add('links', CollectionType::class, array(

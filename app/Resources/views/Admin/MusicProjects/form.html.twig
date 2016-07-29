@@ -17,12 +17,12 @@
                         {{ form_row(form.title) }}
                         {{ form_row(form.category) }}
                         {{ form_row(form.type) }}
-                        {{ form_row(form.languages) }}
                         {{ form_row(form.vocal) }}
 
                         {{ form_row(form.startYear) }}
                         {{ form_row(form.endYear) }}
                         {{ form_row(form.status) }}
+                        <div>{{ form_widget(form.languages) }}</div>
                         <div>{{ form_widget(form.style) }}</div>
 
                     </div>
