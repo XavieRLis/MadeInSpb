@@ -221,4 +221,14 @@ class MusicProjectMember
     {
         return $this->project;
     }
+
+    /**
+     * Get contact
+     *
+     * @return boolean
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
 }

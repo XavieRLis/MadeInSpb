@@ -87,10 +87,10 @@ class MusicProjectType extends AbstractType
                 'label' => false,
                 'placeholder' => 'Город'
             ))
-            ->add('language', null, array(
+            ->add('languages', null, array(
                 'required' => false,
                 'label' => false,
-                'placeholder' => 'Язык'
+
             ))
             ->add('type', null, array(
                 'required' => false,

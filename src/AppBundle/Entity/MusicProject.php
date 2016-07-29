@@ -71,10 +71,10 @@ class MusicProject
 
     /**
      * @var Language
-     * @ORM\ManyToOne(targetEntity="Language", inversedBy="musicProjects")
-     * @ORM\JoinColumn(name="language_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Language", inversedBy="musicProjects")
+     * @ORM\JoinTable(name="projects_languages")
      */
-    private $language;
+    private $languages;
 
     /**
      * @var MusicType
@@ -176,6 +176,7 @@ class MusicProject
         $this->style = new ArrayCollection();
         $this->status = self::STATUS_UNPUBLISHED;
         $this->createdAt = new \DateTime();
+        $this->languages = new ArrayCollection();
     }
 
     /**
@@ -501,30 +502,6 @@ class MusicProject
     }
 
     /**
-     * Set language
-     *
-     * @param Language $language
-     *
-     * @return MusicProject
-     */
-    public function setLanguage(Language $language = null)
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return Language
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
      * Set type
      *
      * @param MusicType $type
@@ -771,5 +748,39 @@ class MusicProject
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+
+    /**
+     * Add language
+     *
+     * @param \AppBundle\Entity\Language $language
+     *
+     * @return MusicProject
+     */
+    public function addLanguage(Language $language)
+    {
+        $this->languages[] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Remove language
+     *
+     * @param \AppBundle\Entity\Language $language
+     */
+    public function removeLanguage(Language $language)
+    {
+        $this->languages->removeElement($language);
+    }
+
+    /**
+     * Get languages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
     }
 }

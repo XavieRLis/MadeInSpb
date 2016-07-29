@@ -25,7 +25,7 @@ class Language
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="MusicProject", mappedBy="language")
+     * @ORM\ManyToMany(targetEntity="MusicProject", mappedBy="languages")
      */
     private $musicProjects;
 
@@ -44,7 +44,7 @@ class Language
      *
      * @param string $name
      *
-     * @return City
+     * @return Language
      */
     public function setName($name)
     {
@@ -67,7 +67,7 @@ class Language
      */
     public function __construct()
     {
-        $this->musicProjects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->musicProjects = new ArrayCollection();
     }
 
     /**
@@ -77,7 +77,7 @@ class Language
      *
      * @return Language
      */
-    public function addMusicProject(\AppBundle\Entity\MusicProject $musicProject)
+    public function addMusicProject(MusicProject $musicProject)
     {
         $this->musicProjects[] = $musicProject;
 
@@ -89,7 +89,7 @@ class Language
      *
      * @param \AppBundle\Entity\MusicProject $musicProject
      */
-    public function removeMusicProject(\AppBundle\Entity\MusicProject $musicProject)
+    public function removeMusicProject(MusicProject $musicProject)
     {
         $this->musicProjects->removeElement($musicProject);
     }
