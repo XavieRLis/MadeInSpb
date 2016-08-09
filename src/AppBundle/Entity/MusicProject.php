@@ -783,4 +783,11 @@ class MusicProject
     {
         return $this->languages;
     }
+
+    public function getMainContact()
+    {
+        return $this->members->filter(function ($member) {
+           return $member->isContact();
+        })->first();
+    }
 }

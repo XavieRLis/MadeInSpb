@@ -15,12 +15,25 @@
                     <tr>
 
                         <th>Название</th>
+                        <th>Контактное лицо</th>
+                        <th>Ссылки</th>
                         <th style="width: 95px">Actions</th>
                     </tr>
                     {% for entity in entities %}
                         <tr>
                             <td>
                                 {{ entity.title }}
+                            </td>
+                            <td>
+                               {% if entity.mainContact %}
+
+                                   <a href="https://vk.com/id{{ entity.mainContact.person.vkId }}" target="_blank">{{ entity.mainContact.person.name }}</a>
+                               {% endif %}
+                            </td>
+                            <td>
+                                {% for link in entity.links %}
+                                    <a href="{{ link.url }}" target="_blank">{{ link.type.name }}</a>
+                                {% endfor %}
                             </td>
                             <td>
                                 <button class="btn btn-default entity-edit" data-entity-id="{{ entity.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
