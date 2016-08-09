@@ -3,12 +3,13 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Link;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use BW\Vkontakte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\CallbackTransformer;
 
 class LinkType extends AbstractType
 {
@@ -31,6 +32,30 @@ class LinkType extends AbstractType
             ))
             ->add('mainResource', CheckboxType::class, array(
                 'label' => 'Основной ресурс',
+            ))
+        ;
+        $builder->get('url')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($url) {
+                    return $url;
+                },
+                function ($inputUrl) {
+                    $vkAPI = new Vkontakte([
+                        'client_id' => '5513448',
+                        'client_secret' => 'ldSBVOfJVgP7VIRpcdEq',
+                    ]);
+                    if (strpos($inputUrl, 'vk.com')===false) {
+                        return $inputUrl;
+                    }
+                    $vkId = str_replace('http://vk.com/', '', $inputUrl);
+                    $vkId = str_replace('https://vk.com/', '', $vkId);
+                    $group = $vkAPI->api('groups.getById', [
+                        'group_ids' => $vkId,
+                        'lang' => 'ru'
+                    ]);
+                    // transform the string back to an array
+                    return 'https://vk.com/public'.$group[0]['id'];
+                }
             ))
         ;
 
