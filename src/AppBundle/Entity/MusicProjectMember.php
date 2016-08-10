@@ -51,7 +51,7 @@ class MusicProjectMember
 
     /**
      * @ORM\ManyToOne(targetEntity="MusicProject", inversedBy="members")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $project;
 

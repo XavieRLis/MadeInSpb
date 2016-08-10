@@ -108,7 +108,7 @@ class MusicProject
     private $links;
 
     /**
-     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="project", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="project", cascade={"persist", "remove"})
      */
     private $members;
 
