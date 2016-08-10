@@ -31,7 +31,7 @@ class AdminSidebarMenuListener
             ),
             $projects = new MenuItemModel(
                 'projects',
-                'Музыкальные проекты',
+                'Артисты и Коллективы',
                 false,
                 array(/* options */),
                 'iconclasses fa fa-music'
@@ -100,20 +100,20 @@ class AdminSidebarMenuListener
         );
         $projects->addChild(
             new MenuItemModel(
+                'projects',
+                'Проекты',
+                'app_admin_musicproject_index',
+                array(/* options */),
+                'iconclasses fa fa-music'
+            )
+        );
+        $projects->addChild(
+            new MenuItemModel(
                 'people',
                 'Участники',
                 'app_admin_person_index',
                 array(/* options */),
                 'iconclasses fa fa-users'
-            )
-        );
-        $projects->addChild(
-            new MenuItemModel(
-                'projects',
-                'Музпроекты',
-                'app_admin_musicproject_index',
-                array(/* options */),
-                'iconclasses fa fa-music'
             )
         );
         return $this->activateByRoute($request->get('_route'), $menuItems);
