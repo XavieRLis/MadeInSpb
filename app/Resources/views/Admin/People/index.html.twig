@@ -1,0 +1,158 @@
+{% extends 'admin.html.twig' %}
+{% block page_title %}
+    {{ pageTitle.classname }}
+{% endblock %}
+{% block page_subtitle %}
+    list
+{% endblock %}
+{% block page_content %}
+    <div id="form">
+
+    </div>
+    <div class="box">
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th> Имя</th>
+                        <th style="width: 95px">Actions</th>
+                    </tr>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>
+                                <a href="https://vk.com/id{{ entity.vkId }}" target="_blank">{{ entity.name }}</a>
+                            </td>
+                            <td>
+                                <button class="btn btn-default entity-edit" data-entity-id="{{ entity.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <button class="btn btn-danger entity-delete" data-entity-id="{{ entity.id }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4>Удаление записи!</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts_inline %}
+    <script>
+        $.ajax({
+            url:'new',
+            success: function (data) {
+                $('#form').html(data);
+            }
+        });
+        $('#form').on("submit", 'form', function(e){
+            e.preventDefault();
+            var formElement = document.querySelector(".entity-form");
+            var formData = new FormData(formElement);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open($(this).attr('method'), $(this).attr('action'));
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if(xhr.status == 200) {
+                        location.reload();
+                    }
+                }
+            };
+            xhr.send(formData);
+        });
+
+        $('.entity-edit').click(function (e) {
+            var $entityId = $(this).data('entity-id');
+
+            $.ajax({
+                url:'edit/'+$entityId,
+                method: "GET",
+                success: function (data) {
+                    $('#form').html(data);
+                    window.scrollTo(0,0);
+                }
+            });
+        });
+        $('.entity-delete').click(function (e) {
+            var $entityId = $(this).data('entity-id');
+            $.ajax({
+                url:'delete/'+$entityId,
+                method: "GET",
+                success: function (data) {
+                    $('#deleteModal').find('.modal-body').html(data);
+                    $('#deleteModal').modal('show');
+                }
+            });
+        });
+
+        $('#deleteModal').on("submit", 'form', function(e){
+            e.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url:$(this).attr('action'),
+                method: "POST",
+                data: formData,
+                success: function (data) {
+                    location.reload();
+                }
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        // keep track of how many email fields have been rendered
+
+        $(document).on('click','#collection_add',   function(e){
+            e.preventDefault();
+
+            var newWidget = $(this).parent('[data-form-type=collection]').attr('data-prototype');
+            console.log($(this).parent('[data-form-type=collection]'));
+            var name = $(this).parent('[data-form-type=collection]').attr('data-prototype-name');
+            var list = $(this).siblings(".collection-list");
+            var count = list.children('.collection-item').length;
+            newWidget = newWidget.replace(new RegExp(name,'g'), count);
+            list.append(newWidget);
+        });
+        $(document).on('click','[data-form-collection=delete]',   function(e){
+            e.preventDefault();
+            $(this).parents('[data-form-collection=item]').remove();
+
+        });
+        $(document).on('change','#catalog_attribute_form_type',   function(e){
+            e.preventDefault();
+            var choiceValue = $(this).val();
+            if(choiceValue =='choice'||choiceValue =='select')
+            {
+                $('.choices_collection').show();
+
+            }else {
+                $('.choices_collection').hide();
+            }
+
+
+        });
+    </script>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/plugins/select2/select2.full.min.js') }}" ></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/plugins/select2/select2.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/dist/css/AdminLTE.min.css') }}">
+{% endblock %}

@@ -23,8 +23,9 @@ class PersonController extends CRUDController
             array(
                 'fieldName' => 'vkId',
                 'label' => 'Ссылка VK'
-            ),            
+            ),
         );
         $this->formType = '\AppBundle\Form\PersonType';
+        $this->templateDirectory = 'Admin/People/';
     }
 }
