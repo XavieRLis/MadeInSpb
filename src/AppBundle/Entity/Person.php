@@ -132,4 +132,9 @@ class Person
     {
         return $this->memberships;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

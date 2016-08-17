@@ -185,19 +185,6 @@ class MusicProjectMember
         return $this->role;
     }
 
-
-    /**
-     * Remove project
-     *
-     * @param \AppBundle\Entity\MusicProject $project
-     */
-    public function removeProject(\AppBundle\Entity\MusicProject $project)
-    {
-        $this->projects->removeElement($project);
-    }
-
-
-
     /**
      * Set project
      *

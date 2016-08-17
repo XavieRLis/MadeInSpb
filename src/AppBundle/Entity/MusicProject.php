@@ -103,12 +103,16 @@ class MusicProject
     private $mainImage;
 
     /**
-     * @ORM\OneToMany(targetEntity="Link", mappedBy="musicProject", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Link", mappedBy="musicProject", cascade={"all"}, orphanRemoval=true)
      */
     private $links;
 
     /**
-     * @ORM\OneToMany(targetEntity="MusicProjectMember", mappedBy="project", cascade={"persist", "remove"})
+     * @ORM\OneToMany(
+     *     targetEntity="MusicProjectMember",
+     *     mappedBy="project",
+     *     cascade={"all"},
+     *     orphanRemoval=true)
      */
     private $members;
 
@@ -607,7 +611,7 @@ class MusicProject
     public function removeMember(MusicProjectMember $member)
     {
         $this->members->removeElement($member);
-        $member->removeProject($this);
+        $member->setProject();
     }
 
     /**

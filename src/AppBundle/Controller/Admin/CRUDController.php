@@ -60,7 +60,7 @@ class CRUDController extends BaseController
 
         if ($form->isValid()) {
             $manager->persist($entity);
-            $manager->flush($entity);
+            $manager->flush();
             return $this->redirect($request->getPathInfo());
         }
         
@@ -81,11 +81,12 @@ class CRUDController extends BaseController
         $entity = $this->getDoctrine()->getRepository($this->entityName)->find($entityId);
         $form = $this->getForm($entity, 'edit/'.$entityId);
         $form->handleRequest($request);
-        $manager = $this->getDoctrine()->getEntityManager();
+        $manager = $this->getDoctrine()->getManager();
 
         if ($form->isValid()) {
+
             $manager->persist($entity);
-            $manager->flush($entity);
+            $manager->flush();
             return $this->redirect($request->getPathInfo());
         }
 
