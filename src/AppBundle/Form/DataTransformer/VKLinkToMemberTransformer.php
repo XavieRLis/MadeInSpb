@@ -63,7 +63,8 @@ class VKLinkToMemberTransformer implements DataTransformerInterface
 
         if (null === $person) {
             $person = new Person();
-            $person->setName($user[0]['last_name'].' '.$user[0]['first_name']);
+            $person->setFirstName($user[0]['first_name']);
+            $person->setLastName($user[0]['last_name']);
             $person->setVkId($user[0]['id']);
         }
 

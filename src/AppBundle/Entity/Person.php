@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +22,18 @@ class Person
      * @ORM\Column(type="string")
      */
     private $name;
+
+    /**
+     * @var string
+     * @ORM\Column(name="first_name", type="string", nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     * @ORM\Column(name="last_name", type="string", nullable=true)
+     */
+    private $lastName;
 
     /**
      * @var string
@@ -48,7 +61,7 @@ class Person
      *
      * @param string $name
      *
-     * @return City
+     * @return Person
      */
     public function setName($name)
     {
@@ -96,7 +109,7 @@ class Person
      */
     public function __construct()
     {
-        $this->memberships = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->memberships = new ArrayCollection();
     }
 
     /**
@@ -106,7 +119,7 @@ class Person
      *
      * @return Person
      */
-    public function addMembership(\AppBundle\Entity\MusicProjectMember $membership)
+    public function addMembership(MusicProjectMember $membership)
     {
         $this->memberships[] = $membership;
 
@@ -118,7 +131,7 @@ class Person
      *
      * @param \AppBundle\Entity\MusicProjectMember $membership
      */
-    public function removeMembership(\AppBundle\Entity\MusicProjectMember $membership)
+    public function removeMembership(MusicProjectMember $membership)
     {
         $this->memberships->removeElement($membership);
     }
@@ -135,6 +148,59 @@ class Person
 
     public function __toString()
     {
-        return $this->name;
+        return $this->getFullName();
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return Person
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get fisrstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Person
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    public function getFullName()
+    {
+        return $this->getLastName().' '.$this->getFirstName();
     }
 }

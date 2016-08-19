@@ -19,11 +19,18 @@ class PersonType extends AbstractType
             'client_secret' => 'ldSBVOfJVgP7VIRpcdEq',
         ]);
         $builder
-            ->add('name', TextType::class, array(
+            ->add('firstName', TextType::class, array(
                 'required' => false,
                 'label' => false,
                 'attr' => array(
-                    'placeholder' => 'ФИО'
+                    'placeholder' => 'Имя'
+                ),
+            ))
+            ->add('lastName', TextType::class, array(
+                'required' => false,
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Фамилия'
                 ),
             ))
             ->add('vkId', TextType::class, array(
