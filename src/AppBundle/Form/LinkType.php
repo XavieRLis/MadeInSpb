@@ -44,7 +44,7 @@ class LinkType extends AbstractType
                         'client_id' => '5513448',
                         'client_secret' => 'ldSBVOfJVgP7VIRpcdEq',
                     ]);
-                    if (strpos($inputUrl, 'vk.com')===false) {
+                    if (strpos($inputUrl, 'vk.com')===false || preg_match('/public[0-9]+/', $inputUrl)==1) {
                         return $inputUrl;
                     }
                     $vkId = str_replace('http://vk.com/', '', $inputUrl);
