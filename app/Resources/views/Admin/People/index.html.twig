@@ -14,13 +14,19 @@
             <table class="table table-striped">
                 <tbody>
                     <tr>
-                        <th> Имя</th>
+                        <th>Имя</th>
+                        <th>Проекты</th>
                         <th style="width: 95px">Actions</th>
                     </tr>
                     {% for entity in entities %}
                         <tr>
                             <td>
                                 <a href="https://vk.com/id{{ entity.vkId }}" target="_blank">{{ entity.name }}</a>
+                            </td>
+                            <td>
+                                {% for membership in entity.memberships %}
+                                    {{ membership.project }} {% if not loop.last %}/{% endif %}
+                                {% endfor %}
                             </td>
                             <td>
                                 <button class="btn btn-default entity-edit" data-entity-id="{{ entity.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>

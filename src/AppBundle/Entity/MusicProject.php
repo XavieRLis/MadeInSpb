@@ -788,10 +788,19 @@ class MusicProject
         return $this->languages;
     }
 
+    /**
+     * @var MusicProjectMember $member
+     * @return MusicProjectMember
+     */
     public function getMainContact()
     {
-        return $this->members->filter(function ($member) {
-           return $member->isContact();
+        return $this->members->filter(function (MusicProjectMember $member) {
+            return $member->isContact();
         })->first();
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }
