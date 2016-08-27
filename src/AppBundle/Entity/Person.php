@@ -19,12 +19,6 @@ class Person
 
     /**
      * @var string
-     * @ORM\Column(type="string")
-     */
-    private $name;
-
-    /**
-     * @var string
      * @ORM\Column(name="first_name", type="string", nullable=true)
      */
     private $firstName;
@@ -54,30 +48,6 @@ class Person
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Person
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

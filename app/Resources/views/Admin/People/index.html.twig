@@ -21,7 +21,7 @@
                     {% for entity in entities %}
                         <tr>
                             <td>
-                                <a href="https://vk.com/id{{ entity.vkId }}" target="_blank">{{ entity.name }}</a>
+                                <a href="https://vk.com/id{{ entity.vkId }}" target="_blank">{{ entity.fullName }}</a>
                             </td>
                             <td>
                                 {% for membership in entity.memberships %}
