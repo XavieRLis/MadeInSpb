@@ -49,8 +49,13 @@ class VKLinkToMemberTransformer implements DataTransformerInterface
         if (!$vkLink) {
             return null;
         }
-        $vkId = str_replace('http://vk.com/', '', $vkLink);
-        $vkId = str_replace('https://vk.com/', '', $vkId);
+        $domains = [
+            'http://vk.com/',
+            'https://vk.com/',
+            'https://vkontakte.ru/',
+            'http://vkontakte.ru/',
+        ];
+        $vkId = str_replace($domains, '', $vkLink);
         $user = $vkAPI->api('users.get', [
             'user_ids' => $vkId,
             'lang' => 'ru'
