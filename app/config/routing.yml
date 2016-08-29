@@ -5,8 +5,9 @@ root:
     path: /
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
-        route: avanzu_admin_home
+        route: app_musicproject_index
         permanent: true
+
 admin_dashboard:
     path: /admin
     defaults:
@@ -16,6 +17,8 @@ admin_dashboard:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    prefix: /
+
 
 admin:
     resource: "@AppBundle/Controller/Admin"

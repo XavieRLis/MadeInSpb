@@ -1,0 +1,65 @@
+<div class="box">
+    <!-- /.box-header -->
+    <div class="box-body">
+        {{ form_start(form, { 'attr': {'class': 'entity-form'} }) }}
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#main" data-toggle="tab" aria-expanded="false">Основные</a>
+                    </li>
+                    <li><a href="#desc" data-toggle="tab" aria-expanded="true">Описание</a></li>
+                    <li><a href="#add" data-toggle="tab" aria-expanded="false">Дополнительно</a></li>
+                    <li><a href="#links" data-toggle="tab" aria-expanded="false">Ссылки и участники</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane inline-form active" id="main">
+                        {{ form_row(form.title) }}
+                        {{ form_row(form.category) }}
+                        {{ form_row(form.type) }}
+                        {{ form_row(form.vocal) }}
+
+                        {{ form_row(form.startYear) }}
+                        {{ form_row(form.endYear) }}
+                        {{ form_row(form.status) }}
+                        <div>{{ form_widget(form.languages) }}</div>
+                        <div>{{ form_widget(form.style) }}</div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane " id="desc">
+                        {{ form_widget(form.description) }}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane inline-form" id="add">
+                        {{ form_row(form.imageFile) }}
+                        {{ form_row(form.city) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.contactPhone) }}
+                    </div>
+                    <div class="tab-pane" id="links">
+                        {{ form_rest(form) }}
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+
+
+
+        <input type="submit" class="btn btn-success">
+        {{ form_end(form) }}
+    </div>
+    <!-- /.box-body -->
+</div>
+<script>
+    $(document).ready(function() {
+        $(".select2").each(function () {
+            $(this).select2({
+                width: '100%',
+                placeholder: $(this).attr('placeholder')
+            });
+        });
+    });
+</script>
