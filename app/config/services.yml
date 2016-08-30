@@ -15,12 +15,12 @@ services:
         tags:
             - { name: kernel.event_listener, event:theme.sidebar_setup_menu, method:onSetupMenu }
 
-    my_admin_bundle.breadcrumb_listener:
-        class: '%app.admin.menu_listener.class%'
-        arguments:
-            - "@security.authorization_checker"
-        tags:
-            - { name: kernel.event_listener, event:theme.breadcrumb, method:onSetupMenu }
+#    my_admin_bundle.breadcrumb_listener:
+#        class: '%app.admin.menu_listener.class%'
+#        arguments:
+#            - "@security.authorization_checker"
+#        tags:
+#            - { name: kernel.event_listener, event:theme.breadcrumb, method:onSetupMenu }
 
     app.form.type.mpmember:
         class: AppBundle\Form\MusicProjectMemberType

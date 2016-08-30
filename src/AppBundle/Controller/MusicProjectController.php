@@ -19,7 +19,7 @@ class MusicProjectController extends Controller
      */
     public function indexAction()
     {
-        $entities = $this->getDoctrine()->getRepository('AppBundle:MusicProject')->findAll();
+        $entities = $this->getDoctrine()->getRepository('AppBundle:MusicProject')->findBy([],['title' => 'ASC']);
         return $this->render('MusicProjects/index.html.twig', array(
             'entities' => $entities,
             'pageTitle' => 'Музыкальные проекты',

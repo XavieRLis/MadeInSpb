@@ -1,13 +1,88 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% block title %}MadeInSpb{% endblock %}
+{% block avanzu_logo %}
+    <a href="/" class="logo">
+        <!-- Add the class icon to your logo image or logo icon to add the margining -->
+        {{ block('title') }}
+    </a>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+{% endblock %}
+{% block page_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-group" id="accordion">
+                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                <div class="panel box box-primary">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="collapsed">
+                                Современная музыка Санкт-Петербурга
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
+                        <div class="box-body">
+                            <p>
+                                Мы рады видеть вас, это проект фонда <a href="http://newculture.ru"> "Новая культура"</a>.
+                                Сайт создается и наполняется на общественных началах и не преследует цели получения прибыли.
+                                Для планомерной работы нам требуется 10 000 рублей ежемесячно на оплату труда программиста,
+                                все другие работы выполняются волонтерами. Не оставайтесь в равнодушными, помогите нам.
+                                Готовы рассмотреть меценатские, спонсорские, партнерские, инвестиционные предложения и заявки от волонтеров.
+                                Пишите <a href="https://vk.com/spbmusic.ilya">Илье Сакмарову Вконтакте</a> или на people.spbmusic@gmail.com
+                            </p>
+                            <p>
+                                Сейчас уже доступны два из трех основных каталогов: (ссылка: "музыкальные проекты") и
+                                (ссылка: "участники музыкальных проектов"). На очереди каталог "Аудиорелизы",
+                                который пока ведется в Гугл-таблице <a href="https://goo.gl/8cd5UQ">здесь</a>.
+                            </p>
+                            <h4>Особенности и планы</h4>
+                            <ul>
+                                <li>
+                                    В разработке - поисковые фильтры в каталоге "Музыкальные проекты" по критериям "название", "язык", "активность" (активные или закрытые), а также по стилям и другим параметрам.
+                                </li>
+                                <li>
+                                    Управление карьерой участника и редактирование информации о музыкальных проектах станет доступно с помощью кнопки "Зайти через Вконтакте". После этого сайт начнет превращаться в социальную сеть, каталоги смогут пополнять уже не только наши редакторы, но и сами музыканты и менеджеры.
+                                </li>
+                                <li>
+                                    Организаторы и промоутеры уже используют наши каталоги для создания уникальных городских проектов. Например, ежегодной <a href="https://vk.com/bestalbum2015">премии "Лучший альбом андеграунда Петербурга"</a>. Вам нужно сделать выборку артистов, альбомов или музыкантов, организовать прием заявок для участия в вашем фестивале или конкурсе? Пишите <a href="https://vk.com/spbmusic.ilya">Илье Сакмарову Вконтакте</a> или на people.spbmusic@gmail.com
+                                </li>
+                                <li>
+                                    Наличие новых функций и сервисов будет зависеть от потребностей музыкантов, слушателей и организаторов.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel box box-success">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
+                                Уже помогли
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                        <div class="box-body">
+                            <h4>Финансовую поддержку оказали:</h4>
+                            <p>
+                                Ежи Мунк (отдельная благодарность), Антон Дударев, Антон Андреев, Joker, Александр Давыдов, Александр Мучанко, Алексей Павлов, Анастасия Дмитриева, Анастасия Ершова, Андрей Тимофеев, Анна Шлендова, Арсений Штрахов, Артём Вострецов, Виолетта Сорокина, Вячеслав Шубодеров, Зоя Федотова, Иван Кузьмин, Кирилл Климочкин, Константин Торин, Людмила Ливанова, Михаил Талызин, Никита Залётов, Роман Коновалов.
+                            </p>
+                            <h4>Информационную и бартерную поддержку оказали:</h4>
+                            <p>
+                                НашРок - виртуальный клуб, Jagger - клуб/ресторан, ClubOK - концертный клуб, Зал ожидания - концертный клуб, Am Media - концертное агентство, Манхэттен - арт-клуб; музыкальные коллективы Планета Vэ и МультFильмы.
+                            </p>
+                            <h4>В создании портала участвовали:</h4>
+                            <p>
+                                Илья Сакмаров, Тимофей Найданов, Мария Захарова
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

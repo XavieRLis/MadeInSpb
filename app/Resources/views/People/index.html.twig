@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{% extends '::base.html.twig' %}
 {% block page_title %}
     {{ pageTitle }}
 {% endblock %}
@@ -6,6 +6,7 @@
     список
 {% endblock %}
 {% block page_content %}
+    {{ parent() }}
     <div class="box">
         <div class="box-body no-padding">
             <table class="table table-striped">

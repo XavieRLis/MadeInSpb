@@ -19,7 +19,7 @@ class PersonController extends Controller
      */
     public function indexAction()
     {
-        $entities = $this->getDoctrine()->getRepository('AppBundle:Person')->findAll();
+        $entities = $this->getDoctrine()->getRepository('AppBundle:Person')->findBy([],['lastName' => 'ASC']);
         return $this->render('People/index.html.twig', array(
             'entities' => $entities,
             'pageTitle' => 'Участники',

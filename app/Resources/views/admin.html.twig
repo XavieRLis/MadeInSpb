@@ -1,5 +1,11 @@
 {% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 {% block title %}MadeInSpb{% endblock %}
+{% block avanzu_logo %}
+    <a href="/" class="logo">
+        <!-- Add the class icon to your logo image or logo icon to add the margining -->
+        {{ block('title') }}
+    </a>
+{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
