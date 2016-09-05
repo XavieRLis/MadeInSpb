@@ -17,8 +17,7 @@
                             <th>Название</th>
                             <th>Основание</th>
                             <th>Закрытие</th>
-                            <th></th>
-                            <th>Язык</th>
+                            <th>Статус</th>
                             <th>Ссылки</th>
                         </tr>
                         {% for entity in entities %}
@@ -29,7 +28,6 @@
                                 <td>{{ entity.startYear }}</td>
                                 <td>{{ entity.endYear }}</td>
                                 <td>{{ entity.categoryLabels[entity.category] }}</td>
-                                <td>{{ entity.language }}</td>
                                 <td>
                                     {% for link in entity.links %}
                                         <a href="{{ link.url }}" target="_blank">{{ link.type.name }}</a>
