@@ -7,29 +7,77 @@
 {% endblock %}
 {% block page_content %}
     {{ parent() }}
-    <div class="box">
-        <div class="box-body no-padding">
-            <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <th>Название</th>
-                        <th>Ссылки</th>
-                    </tr>
-                    {% for entity in entities %}
+    <div class="row">
+        <div class="col-md-8 col-lg-9">
+            <div class="box">
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
                         <tr>
-                            <td>
-                                {{ entity.title }}
-                            </td>
-                            <td>
-                                {% for link in entity.links %}
-                                    <a href="{{ link.url }}" target="_blank">{{ link.type.name }}</a>
-                                {% endfor %}
-                            </td>
+                            <th>Название</th>
+                            <th>Ссылки</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        {% for entity in entities %}
+                            <tr>
+                                <td>
+                                    {{ entity.title }}
+                                </td>
+                                <td>
+                                    {% for link in entity.links %}
+                                        <a href="{{ link.url }}" target="_blank">{{ link.type.name }}</a>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
         </div>
-        <!-- /.box-body -->
+        <div class="col-md-4 col-lg-3">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Фильтры</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <div class="box-body">
+                    <form method="get" action=".">
+                        {{ form_rest(filterForm) }}
+                        <button type="submit" class="btn btn-block btn-success">Показать</button>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
     </div>
+    </div>
+
+{% endblock %}
+{% block javascripts_inline %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $(".select2").each(function () {
+                $(this).select2({
+                    width: '100%',
+                    placeholder: $(this).attr('placeholder')
+                });
+            });
+        });
+    </script>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/plugins/select2/select2.full.min.js') }}" ></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/plugins/select2/select2.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 {% endblock %}

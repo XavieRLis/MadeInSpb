@@ -699,7 +699,7 @@ class MusicProject
     public static function getCategories()
     {
         return [
-            'без категории' => self::CATEGORY_NONE,
+            'Андеграунд' => self::CATEGORY_NONE,
             'ТОП' => self::CATEGORY_TOP
         ];
     }
