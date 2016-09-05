@@ -15,12 +15,28 @@
                         <tbody>
                         <tr>
                             <th>Название</th>
+                            <th>Основание</th>
+                            <th>Закрытие</th>
+                            <th></th>
+                            <th>Направление</th>
+                            <th>Язык</th>
+                            <th>Стили</th>
                             <th>Ссылки</th>
                         </tr>
                         {% for entity in entities %}
                             <tr>
                                 <td>
                                     {{ entity.title }}
+                                </td>
+                                <td>{{ entity.startYear }}</td>
+                                <td>{{ entity.endYear }}</td>
+                                <td>{{ entity.categoryLabels[entity.category] }}</td>
+                                <td>{{ entity.type }}</td>
+                                <td>{{ entity.language }}</td>
+                                <td>
+                                    {% for style in entity.styles %}
+                                        <span class="badge bg-green">{{ style }}</span>
+                                    {% endfor %}
                                 </td>
                                 <td>
                                     {% for link in entity.links %}

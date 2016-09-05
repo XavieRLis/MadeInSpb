@@ -704,6 +704,14 @@ class MusicProject
         ];
     }
 
+    public static function getCategoryLabels()
+    {
+        return [
+            self::CATEGORY_NONE => 'Андеграунд',
+            self::CATEGORY_TOP =>'ТОП'
+        ];
+    }
+
     public static function getVocals()
     {
         return [

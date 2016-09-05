@@ -76,10 +76,10 @@ class ProjectFilterType extends AbstractType
     public function activeFieldCallback(QueryInterface $filterQuery, $field, $values)
     {
         $expr = $filterQuery->getExpr();
-        if ($values['value']==0) {
+        if ($values['value']===0) {
             return $filterQuery->createCondition($expr->isNull($field));
         }
-        if ($values['value']==1) {
+        if ($values['value']===1) {
             return $filterQuery->createCondition($expr->isNotNull($field, null));
         }
         return null;

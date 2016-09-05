@@ -32,11 +32,11 @@ class MusicProjectController extends Controller
             // initialize a query builder
             $filterBuilder = $this->get('doctrine.orm.entity_manager')
                 ->getRepository('AppBundle:MusicProject')
-                ->createQueryBuilder('e');
+                ->createQueryBuilder('e')
+                ->orderBy('e.title', 'ASC');
 
             // build the query from the given form object
             $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($form, $filterBuilder);
-            dump($filterBuilder->getDql());
             $entities =$filterBuilder->getQuery()->getResult();
             // now look at the DQL =)
 
