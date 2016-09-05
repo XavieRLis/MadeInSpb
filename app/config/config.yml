@@ -40,6 +40,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - 'fields.html.twig'
+        - 'LexikFormFilterBundle:Form:form_div_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -73,3 +74,9 @@ swiftmailer:
 
 avanzu_admin_theme:
     bower_bin: C:\Users\xavier\AppData\Roaming\npm\bower.cmd
+
+lexik_form_filter:
+    listeners:
+        doctrine_orm: true
+        doctrine_dbal: false
+        doctrine_mongodb: false
