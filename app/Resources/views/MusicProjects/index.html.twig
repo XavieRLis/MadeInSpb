@@ -39,6 +39,7 @@
                             <th>Start</th>
                             <th>End</th>
                             <th>Статус</th>
+                            <th>Участники</th>
                             <th>Ссылки</th>
                         </tr>
                         {% for entity in entities %}
@@ -47,6 +48,11 @@
                                 <td>{{ entity.startYear }}</td>
                                 <td>{{ entity.endYear }}</td>
                                 <td>{{ entity.categoryLabels[entity.category] }}</td>
+                                <td>
+                                    {% if entity.members|length >0  %}
+                                        {{ entity.members|length }} <a href="{{ path('app_person_index') }}">в базе</a>
+                                    {% endif %}
+                                </td>
                                 <td>
                                     {% for link in entity.links %}
                                         <a href="{{ link.url }}" target="_blank">{{ link.type.name }}</a>
