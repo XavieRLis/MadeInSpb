@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\MusicProject;
 use AppBundle\Form\Filter\ProjectFilterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,7 +24,7 @@ class MusicProjectController extends Controller
     {
         $form = $this->createForm(ProjectFilterType::class);
 
-        $entities = $this->getDoctrine()->getRepository('AppBundle:MusicProject')->findBy([], ['title' => 'ASC']);
+        $entities = $this->getDoctrine()->getRepository('AppBundle:MusicProject')->findBy(['status'=>MusicProject::STATUS_PUBLISHED], ['title' => 'ASC']);
 
         if ($request->query->has($form->getName())) {
             // manually bind values from the request
@@ -33,6 +34,8 @@ class MusicProjectController extends Controller
             $filterBuilder = $this->get('doctrine.orm.entity_manager')
                 ->getRepository('AppBundle:MusicProject')
                 ->createQueryBuilder('e')
+                ->where('e.status = :status')
+                ->setParameter('status', MusicProject::STATUS_PUBLISHED)
                 ->orderBy('e.title', 'ASC');
 
             // build the query from the given form object
