@@ -1,4 +1,11 @@
 .inline-form .form-group
 {
-    display: inline-block;
+    width: 100%;
+    flex: 0 1 auto;
+}
+
+form.inline-form {
+    display: flex;
+    flex-flow: row;
+    align-items:center;
 }

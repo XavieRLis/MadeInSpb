@@ -22,14 +22,14 @@ class ProjectFilterType extends AbstractType
                     'label' => 'Статус'
                 )
             )
-            ->add(
-                'musicType',
-                Filters\EntityFilterType::class,
-                array(
-                    'class'=> 'AppBundle\Entity\MusicType',
-                    'label' => 'Направление'
-                )
-            )
+//            ->add(
+//                'musicType',
+//                Filters\EntityFilterType::class,
+//                array(
+//                    'class'=> 'AppBundle\Entity\MusicType',
+//                    'label' => 'Направление'
+//                )
+//            )
             ->add(
                 'endYear',
                 Filters\ChoiceFilterType::class,
@@ -39,14 +39,14 @@ class ProjectFilterType extends AbstractType
                     'label' => 'Активность'
                 )
             )
-            ->add(
-                'language',
-                Filters\EntityFilterType::class,
-                array(
-                    'class'=> 'AppBundle\Entity\Language',
-                    'label' => 'Язык'
-                )
-            )
+//            ->add(
+//                'language',
+//                Filters\EntityFilterType::class,
+//                array(
+//                    'class'=> 'AppBundle\Entity\Language',
+//                    'label' => 'Язык'
+//                )
+//            )
             ->add(
                 'style',
                 Filters\EntityFilterType::class,
