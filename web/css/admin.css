@@ -22,3 +22,7 @@ form.flex-form {
 .status.active {
     color: #00a65a;
 }
+
+.small-box h3 {
+    margin-bottom: -2px;
+}

@@ -24,7 +24,9 @@ class MusicProjectController extends Controller
     {
         $form = $this->createForm(ProjectFilterType::class);
 
-        $entities = $this->getDoctrine()->getRepository('AppBundle:MusicProject')->findBy(['status'=>MusicProject::STATUS_PUBLISHED], ['title' => 'ASC']);
+        $entities = $this->getDoctrine()
+            ->getRepository('AppBundle:MusicProject')
+            ->findBy(['status'=>MusicProject::STATUS_PUBLISHED], ['title' => 'ASC']);
 
         if ($request->query->has($form->getName())) {
             // manually bind values from the request

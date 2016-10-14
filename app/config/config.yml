@@ -41,6 +41,8 @@ twig:
     form_themes:
         - 'fields.html.twig'
         - 'LexikFormFilterBundle:Form:form_div_layout.html.twig'
+    globals:
+        statistic: '@app.service.statistic'
 
 # Doctrine Configuration
 doctrine:
