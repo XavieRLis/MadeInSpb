@@ -17,6 +17,7 @@
                         <th>Название</th>
                         <th>Контактное лицо</th>
                         <th>Ссылки</th>
+                        <th></th>
                         <th style="width: 95px">Actions</th>
                     </tr>
                     {% for entity in entities %}
@@ -34,6 +35,15 @@
                                 {% for link in entity.links %}
                                     <a href="{{ link.url }}" target="_blank">{{ link.type.name }}</a>
                                 {% endfor %}
+                            </td>
+                            <td>
+                                <div class="status {% if entity.status == 1 %}active{% endif %}">
+                                    {% if entity.status == 1 %}
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    {% else %}
+                                        <i class="fa fa-ban" aria-hidden="true"></i>
+                                    {% endif %}
+                                </div>
                             </td>
                             <td>
                                 <button class="btn btn-default entity-edit" data-entity-id="{{ entity.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></button>

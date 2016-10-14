@@ -14,3 +14,11 @@ form.flex-form {
     flex-flow: row;
     align-items:center;
 }
+.status {
+    font-size: 24px;
+    color: #dd4b39;
+}
+
+.status.active {
+    color: #00a65a;
+}
