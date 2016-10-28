@@ -10,7 +10,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
 {% endblock %}
-{% block page_content %}
+{% block info %}
     <div class="row">
         <div class="col-md-6">
             <div class="info-box bg-yellow">
@@ -57,7 +57,7 @@
                     <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="true">
                         <div class="box-body">
                             <p>
-                            <a href="{{ path('app_musicproject_index') }}">MadeInSpb.com</a> - информационно-аналитический ресурс
+                                <a href="{{ path('app_musicproject_index') }}">MadeInSpb.com</a> - информационно-аналитический ресурс
                                 о современной авторской музыке Санкт-Петербурга. Наш первый каталог артистов
                                 был создан в 2010-м году, в 2013-м была запущена веб-версия,
                                 сейчас мы работаем над развитием трех взаимосвязанных баз данных:
@@ -150,4 +150,6 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block page_content %}
 {% endblock %}
